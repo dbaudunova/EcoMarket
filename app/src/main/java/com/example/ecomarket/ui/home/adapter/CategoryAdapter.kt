@@ -9,7 +9,8 @@ import com.example.ecomarket.data.model.Category
 import com.example.ecomarket.databinding.ItemCategoryBinding
 import com.example.ecomarket.utils.loadImage
 
-class CategoryAdapter: Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(val onClick: (Category) -> Unit) :
+    Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     private var categoryList = ArrayList<Category>()
 
@@ -20,7 +21,13 @@ class CategoryAdapter: Adapter<CategoryAdapter.CategoryViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        return CategoryViewHolder(ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return CategoryViewHolder(
+            ItemCategoryBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount() = categoryList.size
@@ -32,7 +39,11 @@ class CategoryAdapter: Adapter<CategoryAdapter.CategoryViewHolder>() {
         ViewHolder(binding.root) {
         fun bind(category: Category) {
             binding.tvCategory.text = category.name
-            category.image.let { binding.ivCategory.loadImage(it) }
+            //category.image.let { binding.ivCategory.loadImage(it) }
+            binding.ivCategory.loadImage(category.image)
+            itemView.setOnClickListener {
+                onClick.invoke(category)
+            }
         }
     }
 }

@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.ecomarket.R
 import com.example.ecomarket.base.BaseFragment
+import com.example.ecomarket.data.model.Category
 import com.example.ecomarket.databinding.FragmentHomeBinding
 import com.example.ecomarket.ui.home.adapter.CategoryAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,14 +37,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }
     }
 
+    private fun onClick(category: Category) {
+        findNavController().navigate(R.id.productFragment, bundleOf(KEY to category))
+    }
+
     override fun initViews() {
         super.initViews()
-        adapter = CategoryAdapter()
+        adapter = CategoryAdapter(this::onClick)
         binding.rvCategory.adapter = adapter
     }
 
-
     override fun inflateViewBinding(): FragmentHomeBinding {
         return FragmentHomeBinding.inflate(layoutInflater)
+    }
+
+    companion object {
+        const val KEY = "category"
     }
 }

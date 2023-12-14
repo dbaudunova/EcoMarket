@@ -6,4 +6,8 @@
     <string name="home">Главная</string>
     <string name="eco_market">Эко-Маркет</string>
     <string name="fruits">Фрукты</string>
+    <string name="products">Продукты</string>
+    <string name="fast_search">Быстрый поиск</string>
+    <string name="category">Категория</string>
+    <string name="add">Добавить</string>
 </resources>

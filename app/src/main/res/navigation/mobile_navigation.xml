@@ -10,13 +10,11 @@
         android:name="com.example.ecomarket.ui.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
         android:id="@+id/basketFragment"
         android:name="com.example.ecomarket.ui.basket.BasketFragment"
         android:label="@string/basket"
         tools:layout="@layout/fragment_basket" />
-
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.ecomarket.ui.history.HistoryFragment"
@@ -27,4 +25,9 @@
         android:name="com.example.ecomarket.ui.info.InfoFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.ecomarket.ui.home.product.ProductFragment"
+        android:label="@string/products"
+        tools:layout="@layout/fragment_product" />
 </navigation>
