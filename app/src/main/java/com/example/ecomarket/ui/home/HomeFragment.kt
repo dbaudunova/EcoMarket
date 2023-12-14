@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ecomarket.databinding.FragmentHomeBinding
@@ -16,7 +15,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-    private val adapter by lazy { CategoryAdapter() }
+    private lateinit var adapter: CategoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,17 +28,20 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initAdapter()
         initObservers()
+    }
+
+    private fun initAdapter() {
+        adapter = CategoryAdapter()
+        binding.rvCategory.adapter = adapter
+
     }
 
     private fun initObservers() {
         viewModel.getCategories()
         viewModel.categoryResponse.observe(viewLifecycleOwner) {
-            if (it.isSuccessful) {
-                binding.rvCategory.adapter = adapter
-            } else {
-                Toast.makeText(requireContext(), it.message(), Toast.LENGTH_SHORT).show()
-            }
+            adapter.addList(it)
         }
     }
 }

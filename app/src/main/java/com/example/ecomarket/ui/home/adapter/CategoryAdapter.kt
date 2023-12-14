@@ -1,5 +1,6 @@
 package com.example.ecomarket.ui.home.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -10,7 +11,13 @@ import com.example.ecomarket.utils.loadImage
 
 class CategoryAdapter: Adapter<CategoryAdapter.CategoryViewHolder>() {
 
-    private val categoryList = ArrayList<Category>()
+    private var categoryList = ArrayList<Category>()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addList(list: List<Category>) {
+        categoryList = list as ArrayList<Category>
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -25,7 +32,7 @@ class CategoryAdapter: Adapter<CategoryAdapter.CategoryViewHolder>() {
         ViewHolder(binding.root) {
         fun bind(category: Category) {
             binding.tvCategory.text = category.name
-            category.image?.let { binding.ivCategory.loadImage(it) }
+            category.image.let { binding.ivCategory.loadImage(it) }
         }
     }
 }
