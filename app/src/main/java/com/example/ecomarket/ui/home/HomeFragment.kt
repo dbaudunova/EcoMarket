@@ -4,17 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.ecomarket.base.BaseFragment
 import com.example.ecomarket.databinding.FragmentHomeBinding
 import com.example.ecomarket.ui.home.adapter.CategoryAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
-    private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
+    override val viewModel: HomeViewModel by viewModels()
     private lateinit var adapter: CategoryAdapter
 
     override fun onCreateView(
@@ -26,22 +25,21 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initAdapter()
-        initObservers()
-    }
-
-    private fun initAdapter() {
-        adapter = CategoryAdapter()
-        binding.rvCategory.adapter = adapter
-
-    }
-
-    private fun initObservers() {
+    override fun initObserver() {
+        super.initObserver()
         viewModel.getCategories()
         viewModel.categoryResponse.observe(viewLifecycleOwner) {
             adapter.addList(it)
         }
+    }
+
+    override fun initViews() {
+        super.initViews()
+        adapter = CategoryAdapter()
+        binding.rvCategory.adapter = adapter
+    }
+
+    override fun inflateViewBinding(): FragmentHomeBinding {
+        return FragmentHomeBinding.inflate(layoutInflater)
     }
 }
