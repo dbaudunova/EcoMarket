@@ -39,7 +39,6 @@ class CategoryAdapter(val onClick: (Category) -> Unit) :
         ViewHolder(binding.root) {
         fun bind(category: Category) {
             binding.tvCategory.text = category.name
-            //category.image.let { binding.ivCategory.loadImage(it) }
             binding.ivCategory.loadImage(category.image)
             itemView.setOnClickListener {
                 onClick.invoke(category)

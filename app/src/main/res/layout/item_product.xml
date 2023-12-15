@@ -19,7 +19,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_photo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_96dp"
                 android:layout_margin="@dimen/_4dp"
                 app:cardCornerRadius="@dimen/_12dp"
                 app:cardElevation="@dimen/_0dp"
@@ -28,9 +28,9 @@
 
                 <ImageView
                     android:id="@+id/iv_product"
+                    android:scaleType="centerCrop"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/apples" />
+                    android:layout_height="match_parent" />
 
             </androidx.cardview.widget.CardView>
 

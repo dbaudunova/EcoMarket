@@ -1,22 +1,30 @@
 package com.example.ecomarket.ui.info
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.ecomarket.R
+import android.content.Intent
+import android.net.Uri
+import androidx.fragment.app.viewModels
+import com.example.ecomarket.base.BaseFragment
+import com.example.ecomarket.databinding.FragmentInfoBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class InfoFragment : Fragment() {
+class InfoFragment : BaseFragment<FragmentInfoBinding, InfoViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info, container, false)
+    override val viewModel: InfoViewModel by viewModels()
+
+    override fun initListener() {
+        super.initListener()
+        binding.btnCall.setOnClickListener {
+            val number = "0707637341"
+            val intent = Intent(Intent.ACTION_CALL)
+            intent.data = Uri.parse("tel:$number")
+
+            startActivity(intent)
+
+        }
     }
 
+    override fun inflateViewBinding(): FragmentInfoBinding {
+        return FragmentInfoBinding.inflate(layoutInflater)
+    }
 }

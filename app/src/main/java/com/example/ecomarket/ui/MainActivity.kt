@@ -3,6 +3,7 @@ package com.example.ecomarket.ui
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -28,11 +29,23 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment, R.id.basketFragment, R.id.historyFragment, R.id.infoFragment
+                R.id.homeFragment,
+                R.id.basketFragment,
+                R.id.historyFragment,
+                R.id.infoFragment
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
+        val bottomNavFragments = arrayListOf(
+            R.id.homeFragment,
+            R.id.basketFragment,
+            R.id.historyFragment,
+            R.id.infoFragment
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            navView.isVisible = bottomNavFragments.contains(destination.id)
+        }
         supportActionBar?.hide()
 
         navView.setupWithNavController(navController)

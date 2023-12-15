@@ -1,5 +1,6 @@
 package com.example.ecomarket.ui.home.product.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -10,7 +11,13 @@ import com.example.ecomarket.utils.loadImage
 
 class ProductAdapter : Adapter<ProductAdapter.ProductViewHolder>() {
 
-    private val productList = ArrayList<Product>()
+    private var productList = ArrayList<Product>()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addList(list: List<Product>) {
+        productList = list as ArrayList<Product>
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(
@@ -32,8 +39,8 @@ class ProductAdapter : Adapter<ProductAdapter.ProductViewHolder>() {
         ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                ivProduct.loadImage(product.image)
-                tvProductName.text = product.description
+                binding.ivProduct.loadImage(product.image)
+                tvProductName.text = product.title
                 tvPrice.text = product.price
             }
         }
