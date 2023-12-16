@@ -9,7 +9,7 @@ import com.example.ecomarket.data.model.Product
 import com.example.ecomarket.databinding.ItemProductBinding
 import com.example.ecomarket.utils.loadImage
 
-class ProductAdapter : Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(val onClick: (Product) -> Unit) : Adapter<ProductAdapter.ProductViewHolder>() {
 
     private var productList = ArrayList<Product>()
 
@@ -42,6 +42,9 @@ class ProductAdapter : Adapter<ProductAdapter.ProductViewHolder>() {
                 binding.ivProduct.loadImage(product.image)
                 tvProductName.text = product.title
                 tvPrice.text = product.price
+            }
+            itemView.setOnClickListener {
+                onClick(product)
             }
         }
     }

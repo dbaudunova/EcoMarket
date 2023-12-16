@@ -1,5 +1,7 @@
 package com.example.ecomarket.data.model
 
+import java.io.Serializable
+
 data class Product(
     val id: Int,
     val title: String,
@@ -8,4 +10,4 @@ data class Product(
     val image: String,
     val quantity: Int,
     val price: String
-)
+) : Serializable

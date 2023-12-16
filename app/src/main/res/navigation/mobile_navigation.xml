@@ -30,4 +30,9 @@
         android:name="com.example.ecomarket.ui.home.product.ProductFragment"
         android:label="@string/products"
         tools:layout="@layout/fragment_product" />
+    <dialog
+        android:id="@+id/productBottomSheetFragment"
+        android:name="com.example.ecomarket.ProductBottomSheetFragment"
+        android:label="fragment_product_bottom_sheet"
+        tools:layout="@layout/fragment_product_bottom_sheet" />
 </navigation>
