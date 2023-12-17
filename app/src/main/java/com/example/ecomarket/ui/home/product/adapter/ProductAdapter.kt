@@ -2,6 +2,8 @@ package com.example.ecomarket.ui.home.product.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -43,6 +45,14 @@ class ProductAdapter(val onClick: (Product) -> Unit) : Adapter<ProductAdapter.Pr
                 tvProductName.text = product.title
                 tvPrice.text = product.price
             }
+
+            binding.btnAdd.setOnClickListener {
+                binding.btnAdd.visibility = GONE
+                binding.btnMinus.visibility = VISIBLE
+                binding.tvNumber.text = VISIBLE.toString()
+                binding.btnPlus.visibility = VISIBLE
+            }
+
             itemView.setOnClickListener {
                 onClick(product)
             }

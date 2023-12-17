@@ -28,9 +28,9 @@
 
                 <ImageView
                     android:id="@+id/iv_product"
-                    android:scaleType="fitXY"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
 
             </androidx.cardview.widget.CardView>
 
@@ -80,11 +80,63 @@
                 android:backgroundTint="@color/main_green"
                 android:fontFamily="@font/tt_norms_pro_medium"
                 android:padding="@dimen/_8dp"
+                android:stateListAnimator="@null"
                 android:text="@string/add"
                 android:textAllCaps="false"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_minus"
+                android:layout_width="@dimen/_32dp"
+                android:layout_height="@dimen/_32dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:layout_marginBottom="@dimen/_16dp"
+                android:backgroundTint="@color/main_green"
+                android:insetTop="@dimen/_0dp"
+                android:insetBottom="@dimen/_0dp"
+                android:padding="@dimen/_4dp"
+                android:stateListAnimator="@null"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/_48dp"
+                app:icon="@drawable/ic_minus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_price"
+                app:layout_constraintTop_toBottomOf="@id/tv_price" />
+
+            <TextView
+                android:id="@+id/tv_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:fontFamily="@font/tt_norms_pro_medium"
+                android:text="@string/_1"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btn_plus"
+                app:layout_constraintStart_toEndOf="@id/btn_minus"
+                app:layout_constraintTop_toBottomOf="@id/tv_price" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_plus"
+                android:layout_width="@dimen/_32dp"
+                android:layout_height="@dimen/_32dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:layout_marginEnd="@dimen/_4dp"
+                android:layout_marginBottom="@dimen/_16dp"
+                android:backgroundTint="@color/main_green"
+                android:insetTop="@dimen/_0dp"
+                android:insetBottom="@dimen/_0dp"
+                android:padding="@dimen/_4dp"
+                android:stateListAnimator="@null"
+                android:visibility="gone"
+                app:cornerRadius="@dimen/_48dp"
+                app:icon="@drawable/ic_plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_price" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
