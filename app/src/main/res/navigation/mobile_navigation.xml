@@ -32,12 +32,12 @@
         tools:layout="@layout/fragment_product" />
     <dialog
         android:id="@+id/productBottomSheetFragment"
-        android:name="com.example.ecomarket.ui.home.product.bottom_sheet.ProductBottomSheetFragment"
+        android:name="com.example.ecomarket.utils.ProductBottomSheetFragment"
         android:label="fragment_product_bottom_sheet"
         tools:layout="@layout/fragment_product_bottom_sheet" />
     <dialog
         android:id="@+id/noInternetDialogFragment"
-        android:name="com.example.ecomarket.NetworkConnectionDialogFragment"
+        android:name="com.example.ecomarket.utils.NetworkConnectionDialogFragment"
         android:label="fragment_no_internet_dialog"
         tools:layout="@layout/fragment_network_connection_dialog" />
 </navigation>

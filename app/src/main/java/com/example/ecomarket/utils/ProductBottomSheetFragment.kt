@@ -1,4 +1,4 @@
-package com.example.ecomarket.ui.home.product.bottom_sheet
+package com.example.ecomarket.utils
 
 import android.view.View.GONE
 import android.view.View.VISIBLE

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bottom_sheet_bg"
     android:orientation="vertical"
-    tools:context=".ui.home.product.bottom_sheet.ProductBottomSheetFragment">
+    tools:context=".utils.ProductBottomSheetFragment">
 
     <ScrollView
         android:layout_width="match_parent"
